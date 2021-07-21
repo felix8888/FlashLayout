@@ -27,13 +27,18 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.addSubviews(aView, bView)
+        
+//      option 1
         NSLayoutConstraint.activate {
             aView.heightAnchor == aView.widthAnchor * 2 + 30
             aView.widthAnchor == 100
             bView.leftAnchor == aView.centerXAnchor + 100
-            bView.heightAnchor == aView.heightAnchor * 0.5 + 100
+            bView.heightAnchor <= aView.heightAnchor * 0.5 + 100
             bView.widthAnchor == bView.heightAnchor
         }
+
+//      option 2
+//      view.addConstraints("|[aView]|", views: ["aView": aView])
     }
 }
 

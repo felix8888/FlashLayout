@@ -7,12 +7,6 @@
 
 import UIKit
 
-precedencegroup LayoutAssigmentPrecedence{
-    associativity: right
-    lowerThan: AdditionPrecedence
-}
-
-infix operator <=: LayoutAssigmentPrecedence
 public func <= <AnchorType>(left: NSLayoutAnchor<AnchorType>, right: NSLayoutAnchor<AnchorType>) -> NSLayoutConstraint {
     return left.constraint(lessThanOrEqualTo: right)
 }
@@ -24,7 +18,6 @@ public func <= (left: NSLayoutDimension, right: FlashLayoutDimensionDescriber) -
     return left.constraint(lessThanOrEqualTo: anchor, multiplier: right.multiplier, constant: right.constant)
 }
 
-infix operator >=: LayoutAssigmentPrecedence
 public func >= <AnchorType>(left: NSLayoutAnchor<AnchorType>, right: NSLayoutAnchor<AnchorType>) -> NSLayoutConstraint {
     return left.constraint(greaterThanOrEqualTo: right)
 }
@@ -36,7 +29,6 @@ public func >= (left: NSLayoutDimension, right: FlashLayoutDimensionDescriber) -
     return left.constraint(greaterThanOrEqualTo: anchor, multiplier: right.multiplier, constant: right.constant)
 }
 
-infix operator ==: LayoutAssigmentPrecedence
 public func == <Describer: FlashLayoutDescriber>(left: NSLayoutAnchor<Describer.AnchorType>, right: Describer) -> NSLayoutConstraint {
     return left.constraint(equalTo: right.anchor, constant: right.constant)
 }
@@ -48,13 +40,6 @@ public func == (left: NSLayoutDimension, right: FlashLayoutDimensionDescriber) -
     return left.constraint(equalTo: anchor, multiplier: right.multiplier, constant: right.constant)
 }
 
-precedencegroup LayoutPrecedence{
-    associativity: left
-    lowerThan: MultiplicationPrecedence
-    higherThan: AdditionPrecedence
-}
-
-infix operator +: LayoutAssigmentPrecedence
 public func + <AnchorType>(left: NSLayoutAnchor<AnchorType>, constant: CGFloat) -> FlashLayoutDescriptor<AnchorType> {
     return FlashLayoutDescriptor(anchor: left, constant: constant)
 }
@@ -66,12 +51,6 @@ public func + (left: FlashLayoutDimensionDescriptor, right: NSNumber) -> FlashLa
     return descriptor
 }
 
-precedencegroup LayoutMultiplicationPrecedence{
-    associativity: left
-    higherThan: MultiplicationPrecedence
-}
-
-infix operator *: LayoutMultiplicationPrecedence
 public func * (left: NSLayoutDimension, right: NSNumber) -> FlashLayoutDimensionDescriptor {
     return FlashLayoutDimensionDescriptor(anchor: left, multiplier: right)
 }
