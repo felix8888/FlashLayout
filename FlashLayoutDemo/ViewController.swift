@@ -29,12 +29,12 @@ class ViewController: UIViewController {
         view.addSubviews(aView, bView)
         
 //      option 1
-        NSLayoutConstraint.activate {
-            aView.height == aView.width * 2 + 30
-            aView.width == 100
-            bView.left == aView.centerX + 100
-            bView.height <= aView.height * 0.5 + 100
-            bView.width == bView.height
+        NSLayoutConstraint.activate(views: ["aView": aView]) {
+            "V:|[aView(100)]"
+            aView.flWidth == 100
+            bView.flLeft == aView.flCenterX + 100
+            bView.flHeight <= aView.flHeight * 0.5 + 100
+            bView.flWidth == bView.flHeight
         }
 
 //      option 2
