@@ -30,11 +30,11 @@ class ViewController: UIViewController {
         
 //      option 1
         NSLayoutConstraint.activate {
-            aView.heightAnchor == aView.widthAnchor * 2 + 30
-            aView.widthAnchor == 100
-            bView.leftAnchor == aView.centerXAnchor + 100
-            bView.heightAnchor <= aView.heightAnchor * 0.5 + 100
-            bView.widthAnchor == bView.heightAnchor
+            aView.height == aView.width * 2 + 30
+            aView.width == 100
+            bView.left == aView.centerX + 100
+            bView.height <= aView.height * 0.5 + 100
+            bView.width == bView.height
         }
 
 //      option 2
