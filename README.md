@@ -58,9 +58,9 @@ a.leftAnchor.constraint(equalTo: b.centerXAnchor, constant: 100)
 ```
 
 # Available layout anchor math operators
-`==` equal to
-`<=` less than or equal to
-`>=` greater than or equal to
-`*`  multiplier
-`+`  additional constant
+> - `==` equal to
+> - `<=` less than or equal to
+> - `>=` greater than or equal to
+> - `*`  multiplier
+> - `+`  additional constant
 
