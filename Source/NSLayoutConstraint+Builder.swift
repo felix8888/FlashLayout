@@ -81,7 +81,7 @@ extension Array: FlashLayoutConstraintHolder where Iterator.Element == NSLayoutC
     }
 }
 
-private struct CWLayoutFormat: FlashLayoutConstraintHolder, ExpressibleByStringLiteral {
+private struct FLLayoutFormat: FlashLayoutConstraintHolder, ExpressibleByStringLiteral {
     let format: String
     let options: NSLayoutConstraint.FormatOptions
 
@@ -112,11 +112,11 @@ extension String: FlashLayoutConstraintHolder {
         metrics: [String: CGFloat],
         views: [String: NSLayoutConstraint.Containable]
     ) -> [NSLayoutConstraint] {
-        return CWLayoutFormat(self).constraints(metrics: metrics, views: views)
+        return FLLayoutFormat(self).constraints(metrics: metrics, views: views)
     }
 
     public func options( _ options: NSLayoutConstraint.FormatOptions) -> FlashLayoutConstraintHolder {
-        return CWLayoutFormat(self, options: options)
+        return FLLayoutFormat(self, options: options)
     }
 }
 
