@@ -16,7 +16,7 @@ Pod::Spec.new do |spec|
   #
 
   spec.name         = "FlashLayout"
-  spec.version      = "1.0.3"
+  spec.version      = "1.0.4"
   spec.summary      = "FlashLayout provides a way to create and active NSLayoutConstraint much more easily"
 
   # This description is used to generate tags and improve search results.
