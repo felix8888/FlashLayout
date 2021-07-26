@@ -44,9 +44,20 @@ public func + <AnchorType>(left: NSLayoutAnchor<AnchorType>, constant: CGFloat) 
     return FlashLayoutDescriptor(anchor: left, constant: constant)
 }
 
+public func - <AnchorType>(left: NSLayoutAnchor<AnchorType>, constant: CGFloat) -> FlashLayoutDescriptor<AnchorType> {
+    return FlashLayoutDescriptor(anchor: left, constant: -constant)
+}
+
 public func + (left: FlashLayoutDimensionDescriptor, right: NSNumber) -> FlashLayoutDimensionDescriptor {
     var descriptor = left
     descriptor.constant += CGFloat(right.floatValue)
+
+    return descriptor
+}
+
+public func - (left: FlashLayoutDimensionDescriptor, right: NSNumber) -> FlashLayoutDimensionDescriptor {
+    var descriptor = left
+    descriptor.constant -= CGFloat(right.floatValue)
 
     return descriptor
 }
