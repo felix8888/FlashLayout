@@ -31,6 +31,24 @@ extension Int: FlashLayoutDimensionDescriber {
     public var multiplier: CGFloat { 1 }
 }
 
+extension CGFloat: FlashLayoutDimensionDescriber {
+    public var constant: CGFloat {
+        return self
+    }
+
+    public var anchor: NSLayoutDimension? { nil }
+    public var multiplier: CGFloat { 1 }
+}
+
+extension Double: FlashLayoutDimensionDescriber {
+    public var constant: CGFloat {
+        return CGFloat(self)
+    }
+
+    public var anchor: NSLayoutDimension? { nil }
+    public var multiplier: CGFloat { 1 }
+}
+
 extension NSLayoutDimension: FlashLayoutDimensionDescriber {
     public var constant: CGFloat { 0 }
     public var anchor: NSLayoutDimension? { self }
@@ -51,6 +69,12 @@ public struct FlashLayoutDimensionDescriptor: FlashLayoutDimensionDescriber {
     public init(anchor: NSLayoutDimension?, multiplier: Int = 1, constant: CGFloat = 0) {
         self.anchor = anchor
         self.multiplier = CGFloat(multiplier)
+        self.constant = constant
+    }
+
+    public init(anchor: NSLayoutDimension?, multiplier: CGFloat = 1, constant: CGFloat = 0) {
+        self.anchor = anchor
+        self.multiplier = multiplier
         self.constant = constant
     }
 }

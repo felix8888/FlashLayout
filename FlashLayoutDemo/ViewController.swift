@@ -27,14 +27,13 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.addSubviews(aView, bView)
-        
 //      option 1
         NSLayoutConstraint.activate(views: ["aView": aView]) {
             "V:|[aView(100)]"
             aView.flWidth == 100
             bView.flLeft == aView.flCenterX + 100
-            bView.flHeight <= aView.flHeight * 0.5 + 100
-            bView.flWidth == bView.flHeight
+            bView.flHeight <= aView.flHeight * 2.0 + 100.0
+            bView.flWidth <= 100
         }
 
 //      option 2

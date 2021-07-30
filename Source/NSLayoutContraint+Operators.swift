@@ -48,24 +48,22 @@ public func - <AnchorType>(left: NSLayoutAnchor<AnchorType>, constant: CGFloat) 
     return FlashLayoutDescriptor(anchor: left, constant: -constant)
 }
 
-public func + (left: FlashLayoutDimensionDescriptor, right: NSNumber) -> FlashLayoutDimensionDescriptor {
-    var descriptor = left
-    descriptor.constant += CGFloat(right.floatValue)
-
-    return descriptor
+public func + (left: FlashLayoutDimensionDescriber, right: CGFloat) -> FlashLayoutDimensionDescriptor {
+    return FlashLayoutDimensionDescriptor(
+        anchor: left.anchor,
+        multiplier: left.multiplier,
+        constant: left.constant + right
+    )
 }
 
-public func - (left: FlashLayoutDimensionDescriptor, right: NSNumber) -> FlashLayoutDimensionDescriptor {
-    var descriptor = left
-    descriptor.constant -= CGFloat(right.floatValue)
-
-    return descriptor
+public func - (left: FlashLayoutDimensionDescriber, right: CGFloat) -> FlashLayoutDimensionDescriptor {
+    return FlashLayoutDimensionDescriptor(
+        anchor: left.anchor,
+        multiplier: left.multiplier,
+        constant: left.constant - right
+    )
 }
 
-public func * (left: NSLayoutDimension, right: NSNumber) -> FlashLayoutDimensionDescriptor {
-    return FlashLayoutDimensionDescriptor(anchor: left, multiplier: right)
-}
-
-public func * (left: NSLayoutDimension, right: Int) -> FlashLayoutDimensionDescriptor {
+public func * (left: NSLayoutDimension, right: CGFloat) -> FlashLayoutDimensionDescriptor {
     return FlashLayoutDimensionDescriptor(anchor: left, multiplier: right)
 }
