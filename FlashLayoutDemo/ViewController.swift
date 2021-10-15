@@ -34,6 +34,7 @@ class ViewController: UIViewController {
             bView.flLeft == aView.flCenterX + 100
             bView.flHeight <= aView.flHeight * 2.0 + 100.0
             bView.flWidth <= 100
+            bView.flTop >= aView.flBottom - 30
         }
 
 //      option 2

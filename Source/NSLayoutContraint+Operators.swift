@@ -7,8 +7,14 @@
 
 import UIKit
 
+// MARK: - <=
+
 public func <= <AnchorType>(left: NSLayoutAnchor<AnchorType>, right: NSLayoutAnchor<AnchorType>) -> NSLayoutConstraint {
     return left.constraint(lessThanOrEqualTo: right)
+}
+
+public func <= <Describer: FlashLayoutDescriber>(left: NSLayoutAnchor<Describer.AnchorType>, right: Describer) -> NSLayoutConstraint {
+    return left.constraint(lessThanOrEqualTo: right.anchor, constant: right.constant)
 }
 
 public func <= (left: NSLayoutDimension, right: FlashLayoutDimensionDescriber) -> NSLayoutConstraint {
@@ -18,8 +24,14 @@ public func <= (left: NSLayoutDimension, right: FlashLayoutDimensionDescriber) -
     return left.constraint(lessThanOrEqualTo: anchor, multiplier: right.multiplier, constant: right.constant)
 }
 
+// MARK: - >=
+
 public func >= <AnchorType>(left: NSLayoutAnchor<AnchorType>, right: NSLayoutAnchor<AnchorType>) -> NSLayoutConstraint {
     return left.constraint(greaterThanOrEqualTo: right)
+}
+
+public func >= <Describer: FlashLayoutDescriber>(left: NSLayoutAnchor<Describer.AnchorType>, right: Describer) -> NSLayoutConstraint {
+    return left.constraint(greaterThanOrEqualTo: right.anchor, constant: right.constant)
 }
 
 public func >= (left: NSLayoutDimension, right: FlashLayoutDimensionDescriber) -> NSLayoutConstraint {
@@ -28,6 +40,8 @@ public func >= (left: NSLayoutDimension, right: FlashLayoutDimensionDescriber) -
     }
     return left.constraint(greaterThanOrEqualTo: anchor, multiplier: right.multiplier, constant: right.constant)
 }
+
+// MARK: - ==
 
 public func == <Describer: FlashLayoutDescriber>(left: NSLayoutAnchor<Describer.AnchorType>, right: Describer) -> NSLayoutConstraint {
     return left.constraint(equalTo: right.anchor, constant: right.constant)
@@ -40,12 +54,10 @@ public func == (left: NSLayoutDimension, right: FlashLayoutDimensionDescriber) -
     return left.constraint(equalTo: anchor, multiplier: right.multiplier, constant: right.constant)
 }
 
+// MARK: - +
+
 public func + <AnchorType>(left: NSLayoutAnchor<AnchorType>, constant: CGFloat) -> FlashLayoutDescriptor<AnchorType> {
     return FlashLayoutDescriptor(anchor: left, constant: constant)
-}
-
-public func - <AnchorType>(left: NSLayoutAnchor<AnchorType>, constant: CGFloat) -> FlashLayoutDescriptor<AnchorType> {
-    return FlashLayoutDescriptor(anchor: left, constant: -constant)
 }
 
 public func + (left: FlashLayoutDimensionDescriber, right: CGFloat) -> FlashLayoutDimensionDescriptor {
@@ -56,6 +68,12 @@ public func + (left: FlashLayoutDimensionDescriber, right: CGFloat) -> FlashLayo
     )
 }
 
+// MARK: - -
+
+public func - <AnchorType>(left: NSLayoutAnchor<AnchorType>, constant: CGFloat) -> FlashLayoutDescriptor<AnchorType> {
+    return FlashLayoutDescriptor(anchor: left, constant: -constant)
+}
+
 public func - (left: FlashLayoutDimensionDescriber, right: CGFloat) -> FlashLayoutDimensionDescriptor {
     return FlashLayoutDimensionDescriptor(
         anchor: left.anchor,
@@ -63,6 +81,8 @@ public func - (left: FlashLayoutDimensionDescriber, right: CGFloat) -> FlashLayo
         constant: left.constant - right
     )
 }
+
+// MARK: - *
 
 public func * (left: NSLayoutDimension, right: CGFloat) -> FlashLayoutDimensionDescriptor {
     return FlashLayoutDimensionDescriptor(anchor: left, multiplier: right)
