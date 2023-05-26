@@ -4,6 +4,9 @@ FlashLayout wraps the system apis to make it easy to create or active `NSLayoutC
 # Install
 `pod 'FlashLayout'`
 
+# Swift Package Manager
+Copy URL https://github.com/felix8888/FlashLayout as the Package URL
+
 # Use VFL for a single statement
 Call the `addConstraints` to add and create constraints
 
